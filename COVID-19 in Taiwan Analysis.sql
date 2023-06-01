@@ -31,6 +31,19 @@ SELECT   ( SELECT COUNT( `Death Num` ) * 100 FROM `covid-19`  WHERE `Sex` = 'F' 
 SELECT   ROUND(( SELECT COUNT( `Death Num` ) FROM `covid-19`  WHERE `Sex` = 'M' )   /  
 
  (   SELECT  COUNT(`Death Num`)  FROM `covid-19`  ),2) 'Male Death';
+ 
+ #2020-2023境外移入的死亡百分比
+SELECT   ( SELECT COUNT( `Death Num` ) *100 FROM `sheet1`  WHERE `Outbounding?` = '是' )   /  
+
+(   SELECT  COUNT(`Death Num`)  FROM `sheet1`  )   'Outbounding Death Percentage'  ;
+
+#2020-2023 本土確診的死亡百分比
+SELECT   ( SELECT COUNT( `Death Num` ) *100 FROM `sheet1`  WHERE `Outbounding?` = '否' )   /  
+
+(   SELECT  COUNT(`Death Num`)  FROM `sheet1`  )   'Local Death Percentage'  ;
+ 
+ 
+ 
 
 #2021-2023男性確診死亡的百分比
 SELECT   ( SELECT COUNT( `Death Num` ) * 100 FROM `covid-19`  WHERE `Sex` = 'M' )   /  
